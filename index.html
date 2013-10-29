@@ -30,19 +30,24 @@
 		<link rel="shortcut icon" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/images/sort_desc_disabled.png" />
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <style>
-        	#map {height:300px; width:500px;}
+        	#map {height:100%; width:100%;}
         </style>
 		<script>
 			$(document).ready(function() {
-				$('body').layout({applyDefaultStyles: true});
-				alert($('body').layout.options.west.resizable);
+				var layout = $('body').layout({applyDefaultStyles: true});
+				layout.sizePane('west', 150);
+				layout.sizePane('south', 200);
+				layout.toggle('west');
+				
 				$('#example').dataTable( {'sPaginationType': 'full_numbers'});
 			});
 		</script>
 	</head>
 
 	<body>
-		<div id="map" class="ui-layout-center">Map</div>
+		<div id="map" class="ui-layout-center">Map
+			<input type="button" name="expandAllBtn" />	
+		</div>
 		<div class="ui-layout-north">North</div>
 		<!--<div class="ui-layout-south">South</div>-->
 		<div class="ui-layout-east">East</div>
